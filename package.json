@@ -1,7 +1,7 @@
 {
   "name": "overblaze",
   "productName": "OverBlaze",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "OverBlaze - hologram arena shooter",
   "main": "main.js",
   "homepage": "https://overblazeplay.web.app",
@@ -20,7 +20,8 @@
     "productName": "OverBlaze",
     "files": [
       "main.js",
-      "offline.html",
+      "preload.js",
+      "start.html",
       "build/icon.png"
     ],
     "directories": {
@@ -35,7 +36,8 @@
       "oneClick": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "artifactName": "OverBlaze-Setup.exe"
+      "artifactName": "OverBlaze-Setup.exe",
+      "runAfterFinish": true
     },
     "linux": {
       "target": [
@@ -45,14 +47,25 @@
       "icon": "build/icon.png",
       "category": "Game",
       "maintainer": "OverBlaze <360581990+alekseybatalov2016-cmyk@users.noreply.github.com>",
-      "synopsis": "Hologram arena shooter"
+      "synopsis": "Hologram arena shooter",
+      "mimeTypes": [
+        "x-scheme-handler/overblaze"
+      ]
     },
     "deb": {
       "artifactName": "OverBlaze-Ubuntu.deb"
     },
     "appImage": {
       "artifactName": "OverBlaze-Linux.AppImage"
-    }
+    },
+    "protocols": [
+      {
+        "name": "OverBlaze",
+        "schemes": [
+          "overblaze"
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "electron": "^45.5.0",
