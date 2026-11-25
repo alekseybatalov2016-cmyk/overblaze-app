@@ -1,7 +1,7 @@
 {
   "name": "overblaze",
   "productName": "OverBlaze",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "OverBlaze - hologram arena shooter",
   "main": "main.js",
   "homepage": "https://overblazeplay.web.app",
@@ -13,7 +13,8 @@
   "scripts": {
     "start": "electron .",
     "dist:linux": "electron-builder --linux --publish never",
-    "dist:win": "electron-builder --win --publish never"
+    "dist:win": "electron-builder --win --publish never",
+    "dist:mac": "electron-builder --mac --universal --publish never"
   },
   "build": {
     "appId": "com.overblaze.app",
@@ -65,7 +66,19 @@
           "overblaze"
         ]
       }
-    ]
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png",
+      "category": "public.app-category.games",
+      "identity": "-",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "artifactName": "OverBlaze-Mac.dmg",
+      "title": "OverBlaze"
+    }
   },
   "devDependencies": {
     "electron": "^45.5.0",

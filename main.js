@@ -15,6 +15,13 @@ app.on('second-instance', (_e, argv) => {
   win.focus();
   if (argv.some((a) => a.startsWith('overblaze://'))) play().then((r) => r.ok || showStart());
 });
+// On Mac, overblaze:// links arrive as an event instead of a command-line argument.
+app.on('open-url', (e) => {
+  e.preventDefault();
+  if (!win) { autoPlay = true; return; }
+  win.show(); win.focus();
+  play().then((r) => r.ok || showStart());
+});
 if (process.defaultApp) app.setAsDefaultProtocolClient('overblaze', process.execPath, [path.resolve(process.argv[1] || '.')]);
 else app.setAsDefaultProtocolClient('overblaze');
 
